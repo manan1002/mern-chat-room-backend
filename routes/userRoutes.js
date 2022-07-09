@@ -2,6 +2,8 @@ const router = require('express').Router();
 const User = require('../models/User');
 
 // creating user
+// Router for home page at server
+
 router.post('/', async(req, res)=> {
   try {
     const {name, email, password, picture} = req.body;

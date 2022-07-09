@@ -14,7 +14,7 @@ app.use('/users', userRoutes)
 require('./connection')
 
 const server = require('http').createServer(app);
-const PORT = 5001;
+const PORT = 8000;
 const io = require('socket.io')(server, {
   cors: {
     origin: 'http://localhost:3000',
@@ -90,6 +90,19 @@ io.on('connection', (socket)=> {
 
 app.get('/rooms', (req, res)=> {
   res.json(rooms)
+})
+
+
+app.get('/',(req,res)=>{
+  try {
+    res.status(200).json({
+      status:'OK',
+      msg:'Welcome to the server'
+    })
+  } catch (error) {
+    console.log(error.message)
+    res.send(error.message)
+  }
 })
 
 
